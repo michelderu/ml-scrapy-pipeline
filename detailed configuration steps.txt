@@ -1,0 +1,44 @@
+# Install scrapy #
+pip install scrapy
+
+# Install dependencies #
+pip install dicttoxml
+pip install requests
+brew install tidy-html5
+pip install pytidylib
+
+# Create a new project and spider #
+scrapy startproject marklogic
+cd marklogic
+scrapy genspider events http://www.marklogic.com/events
+
+# Update items.py #
+Add the fields that you want scraped and placed in the database
+The only required item here is ‘uri’ as it is used to define the uri of the document in MarkLogic
+
+# Enable the MarkLogic pipeline in settings.py #
+i.e.:
+ITEM_PIPELINES = {
+    'marklogic.pipelines.MarkLogicPipeline': 300,
+}
+MARKLOGIC_DOC_ENDPOINT = 'http://localhost:8003/v1/documents'
+MARKLOGIC_USER = 'admin'
+MARKLOGIC_PASSWORD = 'admin'
+MARKLOGIC_CONTENT_TYPE = 'xml'
+MARKLOGIC_COLLECTIONS = ['data', 'data/events']
+MARKLOGIC_TRANSFORM = ''
+
+# Find and test the fields to be scraped using Scrapy’s shell #
+scrapy shell http://www.http://www.marklogic.com/events/
+i.e. try: response.xpath('//h3/a/@href')[1].extract()
+
+# Create your spider in events.py #
+Check the sample in events.py
+
+# Test the spider #
+Comment the MarkLogic pipeline out, the run:
+scrapy crawl -o test.xml -t xml 'MarkLogic Events'
+
+# Run the spider #
+cd ./ml-scrapy-pipeline/marklogic
+scrapy crawl ‘MarkLogic Events'
