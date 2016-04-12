@@ -17,9 +17,9 @@ MARKLOGIC_CONTENT_TYPE = 'xml'
 MARKLOGIC_COLLECTIONS = ['data', 'data/events']  
 MARKLOGIC_TRANSFORM = ''  
 
-In items.py:
+In items.py:  
 The only the field 'uri' is required as it is used for URI of the document in MarkLogic.
 
 ## Further configuration options
-If json output is preferred, use MARKLOGIC_CONTENT_TYPE = 'json'.
+If json output is preferred, use MARKLOGIC_CONTENT_TYPE = 'json'.  
 In case MARKLOGIC_COLLECTIONS = '', the spider_name will be used for the collection.
