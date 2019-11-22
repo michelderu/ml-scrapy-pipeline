@@ -11,7 +11,7 @@
 #
 # MARKLOGIC_DOC_ENDPOINT = 'http://localhost:8000/v1/documents'
 # MARKLOGIC_USER = 'admin'
-# MARKLOGIC_PASSWORD = 'admin'
+# MARKLOGIC_PASSWORD = ''
 # MARKLOGIC_CONTENT_TYPE = 'xml'
 # MARKLOGIC_COLLECTIONS = ['data', 'data/events']
 # MARKLOGIC_TRANSFORM = ''
